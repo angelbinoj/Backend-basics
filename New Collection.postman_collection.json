@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "74f7d7a3-54b6-4542-a232-12a0e9870b2b",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48040876"
+	},
+	"item": [
+		{
+			"name": "Backend-basics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
