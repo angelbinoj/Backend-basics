@@ -32,7 +32,7 @@ export const deletePost=async(req,res)=>{
                 success:false,message:"Post not found"
             });
         }
-        res.json({success:true,message:"Post deleted successfully"});
+        res.json({success:true,message:`Post with id-${req.params.id} deleted successfully`});
     } catch (error) {
          res.status(500).json({
             success:false,
