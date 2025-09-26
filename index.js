@@ -14,7 +14,21 @@ connectDB()
 const app=express();
 app.use((express.json()));
 app.use(cookieParser());
-app.use(cors({origin:"http://localhost:5173", credentials:true}));
+const allowOrigins = ['http://localhost:5173', 'https://react-frontend-ruddy-theta.vercel.app']
+
+app.use(cors({
+    origin: function (origin, callback) {
+
+        if (!origin) return callback(null, true)
+
+        if (allowOrigins.includes(origin)) {
+            return callback(null, true)
+        } else {
+            return callback(new Error('Not allowed by CORS'))
+        }
+
+    }
+}))
 
 app.use('/api/user',userRouter);
 app.use('/api/customer',customerRouter);
