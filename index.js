@@ -16,6 +16,10 @@ app.use((express.json()));
 app.use(cookieParser());
 app.use(cors({origin:"http://localhost:5173", credentials:true}));
 
+app.use('/',(req,res)=>{
+    res.send("<h1>Welcome to User API</h1>");
+})
+
 app.use('/api/user',userRouter);
 app.use('/api/customer',customerRouter);
 app.use('/api/case',caseRouter);
