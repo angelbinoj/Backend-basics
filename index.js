@@ -5,12 +5,16 @@ import { userRouter } from './routes/userRoutes.js';
 import { customerRouter } from './routes/customerRoutes.js';
 import { caseRouter } from './routes/caseRoutes.js';
 import { globalErrorHandler } from './middlewares/errorMiddlewares.js';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 connectDB()
 
 const app=express();
 app.use((express.json()));
+app.use(cookieParser());
+app.use(cors({origin:"http://localhost:5173", credentials:true}));
 
 app.use('/api/user',userRouter);
 app.use('/api/customer',customerRouter);

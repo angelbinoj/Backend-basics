@@ -1,5 +1,6 @@
 import { DatabaseError, NotFoundError, ValidationError } from "../middlewares/errorMiddlewares.js";
 import { User } from "../models/crmModel.js";
+import bcrypt from "bcryptjs";
 
 export const UserRegisterService = async (userDetails) => {
     try {
@@ -21,9 +22,11 @@ export const loginUserService = async (payload) => {
         if (!user) {
             throw new NotFoundError("user not found!")
         }
-        if (user.password !== password) {
-            throw new ValidationError("incorrect password!")
-        }
+        const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+     throw new ValidationError("incorrect password!")
+    }
+        
         return user
     } catch (error) {
         throw new DatabaseError(error.message)

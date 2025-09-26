@@ -24,8 +24,8 @@ export const authMiddleWare = async (req, res, next) => {
             console.log(req.user);
             
             console.log(tokenValue);
+            next()
         })
-         next()
 
     } catch (error) {
 
